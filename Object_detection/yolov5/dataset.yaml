@@ -1,8 +1,0 @@
-path: Dataset
-train: images/train  
-val: images/val 
-test:  
-
-# Classes
-nc: 5 
-names: [ 'Car', 'Motorcycle', 'Truck', 'Bus', 'Bicycle']  # class names
