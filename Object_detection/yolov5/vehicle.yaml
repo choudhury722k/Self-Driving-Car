@@ -1,0 +1,8 @@
+path: /home/soumya/Self-Driving-Car/Object_detection/dataset_vehicles
+train: images/train  
+val: images/val
+test:  
+
+# Classes
+nc: 5
+names: ['Car', 'Motorcycle', 'Truck', 'Bus', 'Bicycle']
