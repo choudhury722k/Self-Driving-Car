@@ -1,6 +1,6 @@
 path: /home/soumya/Self-Driving-Car/Object_detection/dataset_trafficsign
 train: images/train  
-val: images/valid
+val: images/val
 test:  
 
 # Classes
