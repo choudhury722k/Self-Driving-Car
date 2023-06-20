@@ -1,0 +1,18 @@
+
+train: /content/Self-Driving-Car-2/images/train
+val: /content/Self-Driving-Car-2/images/val
+test: /content/Self-Driving-Car-2/images/test
+
+names:
+- biker
+- car
+- pedestrian
+- trafficLight
+- trafficLight-Green
+- trafficLight-GreenLeft
+- trafficLight-Red
+- trafficLight-RedLeft
+- trafficLight-Yellow
+- trafficLight-YellowLeft
+- truck
+nc: 11

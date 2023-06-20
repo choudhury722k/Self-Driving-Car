@@ -36,6 +36,7 @@ import config.kitti_config as cnf
 from data_process.transformation import lidar_to_camera_box
 from utils.visualization_utils import merge_rgb_to_bev, show_rgb_image_with_boxes
 from data_process.kitti_data_utils import Calibration
+from utils.demo_utils import download_and_unzip
 
 
 def parse_test_configs():
@@ -45,8 +46,10 @@ def parse_test_configs():
     parser.add_argument('-a', '--arch', type=str, default='fpn_resnet_18', metavar='ARCH',
                         help='The name of the model architecture')
     parser.add_argument('--pretrained_path', type=str,
-                        default='../checkpoints/fpn_resnet_18/fpn_resnet_18_epoch_300.pth', metavar='PATH',
+                        default='checkpoints/fpn_resnet_18/fpn_resnet_18_epoch_300.pth', metavar='PATH',
                         help='the path of the pretrained checkpoint')
+    parser.add_argument('--foldername', type=str, default='2011_09_26_drive_0014_sync', metavar='FN',
+                        help='Folder name for demostration dataset')
     parser.add_argument('--K', type=int, default=50,
                         help='the number of top K')
     parser.add_argument('--no_cuda', action='store_true',
@@ -98,7 +101,7 @@ def parse_test_configs():
     ####################################################################
     ##############Dataset, Checkpoints, and results dir configs#########
     ####################################################################
-    configs.root_dir = '../'
+    configs.root_dir = ''
     configs.dataset_dir = os.path.join(configs.root_dir, 'dataset', 'kitti')
 
     if configs.save_test_output:
@@ -110,6 +113,10 @@ def parse_test_configs():
 
 if __name__ == '__main__':
     configs = parse_test_configs()
+
+    # server_url = 'https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data'
+    # download_url = '{}/{}/{}.zip'.format(server_url, configs.foldername[:-5], configs.foldername)
+    # download_and_unzip(configs.dataset_dir, download_url)
 
     model = create_model(configs)
     print('\n\n' + '-*=' * 30 + '\n\n')

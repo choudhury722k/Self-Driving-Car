@@ -57,6 +57,7 @@ def parse_demo_configs():
                         help='the width of showing output, the height maybe vary')
 
     configs = edict(vars(parser.parse_args()))
+    print(configs)
     configs.pin_memory = True
     configs.distributed = False  # For testing on 1 GPU only
 
