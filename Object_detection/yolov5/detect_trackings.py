@@ -240,6 +240,12 @@ def object_tracking_detection(weights=ROOT / 'yolov5s.pt',  # model path or trit
                     cv2.rectangle(im0, top_left, top_right, (255,0,0), -1)
                     cv2.putText(im0, txt, org, cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1)
 
+                    # Collision Detection
+                    im0_width, im0_height = im0.size
+                    if (im0_height - bbox[3]) < int(im0_height / 3):
+                        if (bbox[2] > im0_width/4) and (bbox[2] < (3 * im0_width)/4):
+                            print("Warning Collision detected")
+
                     # DeepSORT -> Saving Track predictions into a text file.
 
                     if save_txt:  # Write to file
